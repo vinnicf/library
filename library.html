@@ -15,15 +15,9 @@
         <a class="navbar-brand" href="#">Library</a>
     
 </nav>
-<div class="container">
-
-
-<p>CLick bellow to add book</p>
-
-<button class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Click me!</button>
 
 <div class=" main container">
- <div class="row bookgrid">
+ <div class="row" id="bookgrid">
     <div class="cardb">
         <p>Festim dos Corvos or a Long Title IDK</p>
         <p>George Martin</p>
@@ -33,17 +27,19 @@
             <button class="btn">Remove Book</button>
         </div>
     </div>
-    <div class="cardb"></div>
-    <div class="cardb"></div>
-    <div class="cardb"></div>
-    <div class="cardb"></div>
-    <div class="cardb"></div>
+
  </div>
 
 </div>
 
 
-</div>
+
+
+
+<p>CLick bellow to add book</p>
+
+<button class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Click me!</button>
+
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -59,7 +55,6 @@
             <input type="text">
 
             <button>Submit</button>
-
 
           </form>
         </div>
