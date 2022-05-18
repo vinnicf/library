@@ -1,0 +1,40 @@
+
+.bookgrid {
+    display: grid;
+    grid-template-columns: 200px 200px 200px;
+    grid-template-rows: 100px 100px;
+    gap: 20px;
+    text-align: center;
+
+}
+
+.main {
+
+    background-color: rgb(199, 199, 199);
+    text-align: center;
+}
+
+.card {
+    background-color: aquamarine;
+    padding:30px;
+    display: flex;
+    border: 2px;
+    border-color: crimson;
+
+}
+
+.cardb {
+    background-color: white;
+    margin: 30px;
+    border-radius: 8px;
+    height: 250px;
+    width: 200px;
+    border: 2px;
+    border-color: crimson;
+    font-size: 20px;
+    line-height: 1.2;
+}
+
+.cardb p {
+    text-align: center;
+}
