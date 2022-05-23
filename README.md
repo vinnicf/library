@@ -7,6 +7,6 @@ Pseudocode:
 
  -  Array to Store Books; DONE
  -  Constructor for the Book Object; DONE
- -  Function to Add Book Object to Library (array);
- -  Form that receives data from user and connect it to the array with the above function;
- -  List the books on the page;
+ -  Function to Add Book Object to Library (array); DONE
+ -  Form that receives data from user and connect it to the array with the above function; DONE
+ -  List the books on the page; DONE

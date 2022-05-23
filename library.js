@@ -26,22 +26,38 @@ function addBooktoLibrary () {
 const bookgrid = document.getElementById('bookgrid');
 
 // Build the card on the page for each item in library
-const createBookCard = (book) => {
+const createBookCard = (book, i) => {
     const bookcard = document.createElement('div');
     const title = document.createElement('p');
     const author = document.createElement('p');
     const pages = document.createElement('p');
+    const buttongroup = document.createElement('div');
+    const notread = document.createElement('button');
+    const remove = document.createElement('button');
+
 
     bookcard.classList.add('cardb');
+    buttongroup.classList.add('button-group');
+    notread.classList.add('btn');
+    remove.classList.add('btn');
+    remove.classList.add('delete-btn');
+    
 
     title.textContent = book.book;
     author.textContent = book.author;
     pages.textContent = `${book.pages} pages`;
+    notread.textContent = 'Not Read';
+    remove.textContent = 'Remove'
 
+    bookcard.dataset.book = i;
 
     bookcard.appendChild(title);
     bookcard.appendChild(author);
     bookcard.appendChild(pages);
+    buttongroup.appendChild(notread);
+    buttongroup.appendChild(remove);
+    bookcard.appendChild(buttongroup);
+
     bookgrid.appendChild(bookcard);
 
 }
@@ -51,17 +67,38 @@ function fillbookgrid () {
 bookgrid.innerHTML = "";
 
 for (i=0;i < library.length; i++) {
-    createBookCard(library[i])
+    createBookCard(library[i], i)
 
 }
 }
 
 const booksave = document.getElementById('booksave')
 
+// Fill the page when the user first opens it
+fillbookgrid ()
+
+// Refresh the page with the added item every time user adds a book
 booksave.addEventListener('click', () => {
     addBooktoLibrary();
     console.log('Sucess');
     fillbookgrid ()
+})
+
+//Delete the book
+const deletelist = document.getElementsByClassName('delete-btn');
+const deletearray = Array.from(deletelist);
+deletearray.forEach((button) => {
+       
+    button.addEventListener('click', () => {
+        parentcard = button.parentElement.parentElement;
+        parentcardid = parentcard.getAttribute('data-book');
+        console.log(parentcardid);
+        console.log(deletearray.indexOf(button));
+        library.splice(parentcardid,1);
+        fillbookgrid()
+        
+
+    })
 })
 
 
