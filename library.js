@@ -86,24 +86,19 @@ booksave.addEventListener('click', () => {
 })
 
 //Delete the book function
-function deletebookevent(){
-    let deletelist = document.getElementsByClassName('delete-btn');
-    let deletearray = Array.from(deletelist);
 
-deletearray.forEach((button) => {
-       
-    button.addEventListener('click', () => {
-        parentcard = button.parentElement.parentElement;
-        parentcardid = parentcard.getAttribute('data-book');
-        console.log(parentcardid);
-        console.log('Cliked delete');
-        console.log(deletearray.indexOf(button));
-        library.splice(parentcardid,1);
-        parentcard.remove();
-       
-    })
-})
-}
+
+function removeBookFromLibrary(event) {
+    if (event.target.className === 'btn delete-btn') {
+      const index = event.target.parentElement.parentElement.getAttribute('data-book');
+      library.splice(index, 1);
+      fillbookgrid();
+    }
+  }
+
+document.addEventListener('click', (event) => {
+    removeBookFromLibrary(event);
+  });
 
 
 // Fill the page when the user first opens it
