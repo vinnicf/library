@@ -1,14 +1,15 @@
 
 let library = [
     {book: 'Festim dos Corvos', author: 'George Martin', pages: 570, read: true},
-    {book: 'Watchmen', author: 'Alan Moore', pages: 331, read:true}
+    {book: 'Watchmen', author: 'Alan Moore', pages: 331, read:true},
+    {book: 'Memorias de Poirot', author: 'Edgar Allan Poe', pages: 400, read:true}
 ]
 
 function Book(book, author, pages, isread) {
     this.book = book;
     this.author = author;
     this.pages = pages;
-    this.read = isread
+    this.read = isread;
 }
 
 function addBooktoLibrary () {
@@ -21,6 +22,8 @@ function addBooktoLibrary () {
     const newbook = new Book (book, author, pages, isread);
 // Push newbook into the array;
     library.push(newbook); 
+
+  
 }
 
 const bookgrid = document.getElementById('bookgrid');
@@ -68,41 +71,42 @@ bookgrid.innerHTML = "";
 
 for (i=0;i < library.length; i++) {
     createBookCard(library[i], i)
-
 }
 }
 
 const booksave = document.getElementById('booksave')
 
-// Fill the page when the user first opens it
-fillbookgrid ()
 
-// Refresh the page with the added item every time user adds a book
+// Reset the grid with the added item every time user adds a book
 booksave.addEventListener('click', () => {
     addBooktoLibrary();
     console.log('Sucess');
-    fillbookgrid ()
+    fillbookgrid ();
+    
 })
 
-//Delete the book
-const deletelist = document.getElementsByClassName('delete-btn');
-const deletearray = Array.from(deletelist);
+//Delete the book function
+function deletebookevent(){
+    let deletelist = document.getElementsByClassName('delete-btn');
+    let deletearray = Array.from(deletelist);
+
 deletearray.forEach((button) => {
        
     button.addEventListener('click', () => {
         parentcard = button.parentElement.parentElement;
         parentcardid = parentcard.getAttribute('data-book');
         console.log(parentcardid);
+        console.log('Cliked delete');
         console.log(deletearray.indexOf(button));
         library.splice(parentcardid,1);
-        fillbookgrid()
-        
-
+        parentcard.remove();
+       
     })
 })
+}
 
 
-
-
-
+// Fill the page when the user first opens it
+fillbookgrid ()
+deletebookevent()
 
